@@ -1,0 +1,12 @@
+.mat-mdc-card {
+    margin: 2%;
+}
+
+.mdc-button {
+    margin: 2px;
+}
+
+.mat-mdc-header-row {
+  background-color: #3f8edc;
+  color: white;
+}

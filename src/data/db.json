@@ -1,0 +1,32 @@
+{
+  "associate": [
+    {
+      "id": "0376a3dc",
+      "name": "JK",
+      "address": "Singapore",
+      "creditlimit": "2270",
+      "status": true
+    },
+    {
+      "id": "1a1971a7",
+      "name": "Caitlyn",
+      "address": "South Korea",
+      "creditlimit": "5000",
+      "status": true
+    },
+    {
+      "id": "7aa714d3",
+      "name": "Ichika",
+      "address": "Japan",
+      "creditlimit": "5000",
+      "status": false
+    },
+    {
+      "id": "1e47cce8",
+      "name": "David",
+      "address": "Australia",
+      "creditlimit": "5000",
+      "status": true
+    }
+  ]
+}
