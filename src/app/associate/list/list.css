@@ -1,12 +1,17 @@
 .mat-mdc-card {
-    margin: 2%;
+  margin: 2%;
 }
 
 .mdc-button {
-    margin: 2px;
+  margin: 2px;
 }
 
 .mat-mdc-header-row {
   background-color: #3f8edc;
   color: white;
+}
+
+.mat-mdc-card-header {
+  justify-content: flex-end;
+  margin-bottom: 1%;
 }

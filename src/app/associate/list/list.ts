@@ -7,6 +7,7 @@ import { Associate } from '../../_shared/associate';
 import { associateModel } from '../../../model/associate';
 import { Subscription } from 'rxjs';
 import { Add } from '../add/add';
+import { toast, NgxSonnerToaster } from 'ngx-sonner';
 
 @Component({
   selector: 'app-list',
@@ -14,10 +15,11 @@ import { Add } from '../add/add';
   templateUrl: './list.html',
   styleUrl: './list.css'
 })
+
 export class List implements OnInit, OnDestroy {
   _list: associateModel[] = [];
   subs = new Subscription();
-  displayHeaders = ['id', 'name', 'address', 'cl', 'status', 'action']
+  displayHeaders = ['id', 'name', 'department', 'salary', 'status', 'action']
   datasource = new MatTableDataSource<associateModel>([]);
   @ViewChild(MatTable) table!: MatTable<any>
   constructor(private service: Associate, private dialog: MatDialog) { }
@@ -46,6 +48,7 @@ export class List implements OnInit, OnDestroy {
     this.openPopup();
   }
   openPopup(data?: associateModel) {
+    toast.dismiss();
     this.dialog.open(Add, {
       width: '40%',
       enterAnimationDuration: '500ms',
@@ -59,11 +62,31 @@ export class List implements OnInit, OnDestroy {
     this.openPopup(item);
   }
   Delete(id: any) {
-    if (confirm('Do you want to delete?')) {
-      this.service.Delete(id).subscribe(item=>{
-        alert('Deleted');
-        this.UpdateList();
-      })
-    }
+    toast.dismiss();
+    toast.warning('Are you sure you want to delete?', {
+    duration: Number.POSITIVE_INFINITY,
+    closeButton: true,
+    classes: {
+      actionButton: 'delete-action'
+    },
+    
+    action: {
+      label: 'Delete Record',
+      onClick: () => {
+        this.service.Delete(id).subscribe(item=>{
+          toast.dismiss();
+          toast.success('Record deleted successfully');
+          this.UpdateList();
+        });
+      }
+    },
+  });
+    // if (confirm('Are you sure you want to delete?')) {
+    //   this.service.Delete(id).subscribe(item=>{
+    //     // alert('Deleted');
+    //     toast.success('Record deleted successfully');
+    //     this.UpdateList();
+    //   })
+    // }
   }
 }

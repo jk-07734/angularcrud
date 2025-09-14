@@ -3,30 +3,44 @@
     {
       "id": "0376a3dc",
       "name": "JK",
-      "address": "Singapore",
-      "creditlimit": "2270",
+      "department": "IT",
+      "salary": "2270",
       "status": true
     },
     {
       "id": "1a1971a7",
       "name": "Caitlyn",
-      "address": "South Korea",
-      "creditlimit": "5000",
+      "department": "Music",
+      "salary": "5000",
       "status": true
     },
     {
       "id": "7aa714d3",
       "name": "Ichika",
-      "address": "Japan",
-      "creditlimit": "5000",
+      "department": "Music",
+      "salary": "1108",
       "status": false
     },
     {
       "id": "1e47cce8",
       "name": "David",
-      "address": "Australia",
-      "creditlimit": "5000",
+      "department": "History",
+      "salary": "5000",
       "status": true
+    },
+    {
+      "id": "e75300dd",
+      "name": "Gwyn",
+      "department": "Engineering",
+      "salary": "5000",
+      "status": true
+    },
+    {
+      "id": "9f034702",
+      "name": "Mel",
+      "department": "Biology",
+      "salary": "5000",
+      "status": false
     }
   ]
 }

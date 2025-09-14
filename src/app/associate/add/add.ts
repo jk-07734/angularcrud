@@ -8,6 +8,7 @@ import { Associate } from '../../_shared/associate';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { associateModel } from '../../../model/associate';
 import { v4 as uuidv4 } from 'uuid';
+import { toast, NgxSonnerToaster } from 'ngx-sonner';
 
 @Component({
   selector: 'app-add',
@@ -30,8 +31,8 @@ export class Add implements OnInit, OnDestroy {
     this._form = this.builder.group({
       // id: this.builder.control({ disabled: true, value: 0 }),
       name: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(2)])),
-      address: this.builder.control('', Validators.required),
-      cl: this.builder.control(0, Validators.required),
+      department: this.builder.control('', Validators.required),
+      salary: this.builder.control(0, Validators.required),
       status: this.builder.control(true),
     })
     if (this.dialogdata && this.dialogdata.id != null) {
@@ -39,8 +40,8 @@ export class Add implements OnInit, OnDestroy {
       this.isadd = false;
       this._form.patchValue({
         name: this.dialogdata.name,
-        address: this.dialogdata.address,
-        cl: this.dialogdata.creditlimit,
+        department: this.dialogdata.department,
+        salary: this.dialogdata.salary,
         status: this.dialogdata.status
       });
     }
@@ -58,18 +59,22 @@ export class Add implements OnInit, OnDestroy {
         // id: raw.id as string,
         id: this.isadd ? uuidv4().split('-')[0] : this.dialogdata.id,
         name: raw.name as string,
-        address: raw.address as string,
-        creditlimit: raw.cl as number,
+        department: raw.department as string,
+        salary: raw.salary as number,
         status: raw.status as boolean
       }
       if (this.isadd) {
         this.service.Create(_data).subscribe(item => {
-          alert('Saved.')
+          // alert('Saved.')
+          toast.dismiss();
+          toast.success('Added succesfully');
           this.close();
         })
       } else {
         this.service.Update(_data).subscribe(item => {
-          alert('Updated.')
+          // alert('Updated.')
+          toast.dismiss();
+          toast.success('Changes saved successfully.');
           this.close();
         })
       }

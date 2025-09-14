@@ -2,3 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.delete-action {
+  background-color: #f05e35 !important;
+  color: white !important;
+}
